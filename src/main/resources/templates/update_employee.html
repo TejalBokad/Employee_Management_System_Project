@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+
+<link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+<style>
+    body {
+        background-image: url('https://flowdog.io/wp-content/uploads/2021/11/System-DMS.png');
+        background-size: cover;
+        min-height: 100vh; /* Ensure the background covers the entire viewport */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .container {
+        text-align: center; /* Align contents center within the container */
+        background-color: rgba(255, 255, 255, 0.3); /* Add a semi-transparent white background to improve readability */
+        padding: 20px;
+        border-radius: 10px; /* Add some border-radius for a nicer look */
+    }
+
+    h1, h2 {
+        color: #fff; /* Set text color to white */
+    }
+
+    input[type="text"] {
+        margin-bottom: 15px; /* Add some spacing between input fields */
+    }
+
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <!--  <h1>Employee Management System</h1>  -->
+        <hr>
+        <h2>Update Employee</h2>
+
+        <form action="#" th:action="@{/saveEmployee}" th:object="${employee}"
+            method="POST">
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{id}" />
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <input type="text" th:field="*{firstName}" class="form-control mb-4" placeholder="First Name">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <input type="text" th:field="*{lastName}" class="form-control mb-4" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <input type="text" th:field="*{email}" class="form-control mb-4" placeholder="Email">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-info btn-lg">Update Employee</button>
+                </div>
+            </div>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/emp}" style="color:white;"> Back to Employee List</a><br>
+        <a th:href="@{/}" style="color:white;"> Home page</a>
+
+
+    </div>
+</body>
+</html>

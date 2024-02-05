@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+ 
+<style>
+  body {
+    background-color: #f8f9fa; /* Set background color */
+    font-family: Arial, sans-serif; /* Set font */
+  }
+
+  .container {
+    background-color: #ffffff; /* Set container background color */
+    border-radius: 10px; /* Add rounded corners to the container */
+    padding: 20px; /* Add padding inside the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  }
+
+  h1 {
+    color: #343a40; /* Set heading color */
+  }
+
+  .btn-primary {
+    background-color: #007bff; /* Set primary button background color */
+    border-color: #007bff; /* Set primary button border color */
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3; /* Set hover color for primary button */
+    border-color: #0056b3; /* Set hover border color for primary button */
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Add space below the table */
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6; /* Add bottom border for table cells */
+  }
+
+  th {
+    background-color: #f8f9fa; /* Set background color for table header */
+    font-weight: bold; /* Make table header text bold */
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f3f5f7; /* Set background color for odd rows */
+  }
+
+  .pagination {
+    margin-top: 20px; /* Add space above the pagination */
+  }
+
+</style>
+ 
+</head>
+<body>
+	<!-- Navbar -->
+	<nav class="navbar  navbar-expand-lg " >   <!--navbar-dark bg-dark"-->  
+		<div class="container">
+			<a class="navbar-brand" href="#">Employee Management System</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+
+					<!-- 
+					<li class="nav-item">
+                        <a class="nav-link" th:href="@{//}">Home</a>
+                    </li> 
+                     -->
+                    <li class="nav-item">
+    					<a class="nav-link" th:href="@{/}">Home</a>
+					</li>
+                    
+					<li class="nav-item"><a class="nav-link" th:href="@{/emp}">Employees
+							List</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/showNewEmployeeForm}">Add
+							Employee</a></li>
+					<!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>  -->
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+
+
+ <div class="container my-2 text-center">
+ <h2>Employees List</h2>
+ 
+ <a th:href = "@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+ 
+  <table class="table table-striped table-responsive-md">
+   <thead>
+    <tr>
+     <th>
+      <a th:href="@{'/page/' + ${currentPage} + '?sortField=firstName&sortDir=' + ${reverseSortDir}}">
+       Employee First Name</a>
+     </th>
+     <th>
+     <a th:href="@{'/page/' + ${currentPage} + '?sortField=lastName&sortDir=' + ${reverseSortDir}}">
+       Employee Last Name</a>
+     </th>
+     <th>
+     <a th:href="@{'/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">
+       Employee Email</a>
+     </th>
+     <th style="color: #0099ff;"> Actions </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="employee : ${listEmployees}">
+     <td th:text="${employee.firstName}"></td>
+     <td th:text="${employee.lastName}"></td>
+     <td th:text="${employee.email}"></td>
+     <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>
+         <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  
+  <div th:if = "${totalPages > 1}" class="pagination">
+   <div class="row col-sm-10">
+    <div class="col-sm-2">
+     Total Rows: [[${totalItems}]] 
+    </div>
+    <div class="col-sm-1">
+     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+      <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+      <span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+     </span>
+    </div>
+    <div class="col-sm-1">
+     <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+     <span th:unless="${currentPage < totalPages}">Next</span>
+    </div>
+    
+     <div class="col-sm-1">
+        <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+     <span th:unless="${currentPage < totalPages}">Last</span>
+        </div>
+   </div>
+  </div>
+ </div>
+</body>
+</html>
