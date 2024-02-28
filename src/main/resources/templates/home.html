@@ -19,22 +19,95 @@
 		url('https://previews.123rf.com/images/brovector/brovector2005/brovector200500434/147817487-business-team-working-together-brainstorming-discussing-ideas-for-project-people-meeting-at-desk-in.jpg');
 	/* Replace 'path/to/your/image.jpg' with the path to your image */
 	background-size: cover;
-	/* Cover the entire background */
 	background-position: center;
-	/* Center the background image */
-	/*height: 600px;*/
-	/* Adjust the height of the background image */
-	/*width: 80%;*/
 	height: 90vh;
-	
 }
 
 .overlay-text {
 	position: absolute;
 	top: 50%;
 	left: 80%;
-	right:0%;
+	right: 0%;
 	transform: translate(-50%, -50%);
+}
+
+.contact {
+	padding: 130px 0;
+}
+
+.contact .heading h2 {
+	font-size: 30px;
+	font-weight: 700;
+	margin: 0;
+	padding: 0;
+}
+
+.contact .heading h2 span {
+	color: #008080;
+}
+
+.contact .heading p {
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.7;
+	color: #999999;
+	margin: 20px 0 60px;
+	padding: 0;
+}
+
+.contact .form-control {
+	padding: 25px;
+	font-size: 13px;
+	margin-bottom: 10px;
+	background: #f9f9f9;
+	border: 0;
+	border-radius: 10px;
+}
+
+.contact button.btn {
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 15px;
+	background: #008080;
+	color: #ffffff;
+}
+
+.contact .title h3 {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.contact .title p {
+	font-size: 14px;
+	font-weight: 400;
+	color: #999;
+	line-height: 1.6;
+	margin: 0 0 40px;
+}
+
+.contact .content .info {
+	margin-top: 30px;
+}
+
+.contact .content .info i {
+	font-size: 30px;
+	padding: 0;
+	margin: 0;
+	color: #02434b;
+	margin-right: 20px;
+	text-align: center;
+	width: 20px;
+}
+
+.contact .content .info h4 {
+	font-size: 13px;
+	line-height: 1.4;
+}
+
+.contact .content .info h4 span {
+	font-size: 13px;
+	font-weight: 300;
+	color: #999999;
 }
 </style>
 
@@ -53,18 +126,16 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
 
-					
-					<li class="nav-item active text-warning" ><!--style="color:black;"-->
-                        <a class="nav-link" th:href="@{/}">Home</a>
-                    </li> 
+
+					<li class="nav-item "><a class="nav-link" th:href="@{/}">Home</a>
+					</li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/emp}">Employees
 							List</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/showNewEmployeeForm}">Add
-							Employee</a></li>
-					<!--
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>  -->
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/showNewEmployeeForm}">Add Employee</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="#contact">Contact
+							Us</a></li>
 
 				</ul>
 			</div>
@@ -74,21 +145,21 @@
 	<!-- Content Section -->
 
 	<!-- Background Image -->
-	<div class="container-fluid position-relative">
+	<div class="container-fluid position-relative"
+		style="padding-top: 70px; padding-left: 1px;">
 		<div class="col-md-8 bg-image"></div>
 
 
-		<!--<div class="container mt-4"> -->
+
 
 
 		<div class="overlay-text">
-			<h2 style="color:#008080;font-family:cursive; ">Welcome to Employee Management System</h2>
+			<h2 style="color: #008080; font-family: cursive;">Welcome to
+				Employee Management System</h2>
 			<p style="text-align: center">
-				<strong>--"-----------------------------------</strong><br> 
-				<i>Coming together is a beginning.</i><br> 
-				<i>Keeping together is a progress. </i><br> 
-				<i>Working together is success.</i><br> 
-				<strong>-----------------------------"--</strong>
+				<strong>--"-----------------------------------</strong><br> <i>Coming
+					together is a beginning.</i><br> <i>Keeping together is a
+					progress. </i><br> <i>Working together is success.</i><br> <strong>-----------------------------"--</strong>
 			</p>
 
 
@@ -96,10 +167,78 @@
 
 	</div>
 
-	<!-- Footer -->
-	<footer class="bg-dark fixed-bottom text-light text-center py-3">
+	<section class="contact" id="contact" style="background-color: #e6fffa">
 		<div class="container">
-			<p>&copy; 2024 Employee Management System</p>
+			<div class="heading text-center">
+				<h2>
+					Contact <span> Us </span>
+				</h2>
+				<p>
+					If you have any work for me or any types of queries related to my
+					application, <br> you can send me a message from here. It's my
+					pleasure to help you.
+				</p>
+			</div>
+			<div class="row">
+				<div class="col-md-5">
+					<div class="title">
+						<h3>Contact detail</h3>
+
+					</div>
+					<div class="content">
+						<!-- Info-1 -->
+						<div class="info">
+							<i class="fas fa-mobile-alt"></i>
+							<h4 class="d-inline-block">
+								PHONE : <br> <span>+91 1234567890</span>
+							</h4>
+						</div>
+						<!-- Info-2 -->
+						<div class="info">
+							<i class="far fa-envelope"></i>
+							<h4 class="d-inline-block">
+								EMAIL : <br> <span>abc@gmail.com</span>
+							</h4>
+						</div>
+						<!-- Info-3 -->
+						<div class="info">
+							<i class="fas fa-map-marker-alt"></i>
+							<h4 class="d-inline-block">
+								ADDRESS :<br> <span>Maharashtra,India</span>
+							</h4>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-7">
+
+					<form th:action="@{/submitContactForm}" method="post">
+						<div class="row">
+							<div class="col-sm-6">
+								<input type="text" class="form-control" placeholder="Name"
+									name="name">
+							</div>
+							<div class="col-sm-6">
+								<input type="email" class="form-control" placeholder="Email"
+									name="email">
+							</div>
+
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" rows="5" id="comment"
+								placeholder="Message" name="message"></textarea>
+						</div>
+						<button class="btn btn-block" type="submit">Send Now!</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-dark  text-light text-center py-3">
+		<div class="container">
+			<p>&copy; Created by Tejal | 2024 Employee Management System</p>
 		</div>
 	</footer>
 
